@@ -269,7 +269,7 @@ pub struct BookingApiClient {
 
 #[async_trait]
 impl ApiClient for BookingApiClient {
-    async fn search(&self, request: SearchRequest) -> Result<SearchResponse, ApiError> {
+    async fn search(&self, _request: SearchRequest) -> Result<SearchResponse, ApiError> {
         // TODO: Implement with:
         // - Rate limiting using token bucket algorithm
         // - Priority-based queueing
@@ -280,7 +280,7 @@ impl ApiClient for BookingApiClient {
         Err(ApiError::Other("Not implemented".to_string()))
     }
     
-    async fn book(&self, request: BookingRequest) -> Result<BookingResponse, ApiError> {
+    async fn book(&self, _request: BookingRequest) -> Result<BookingResponse, ApiError> {
         // TODO: Implement with higher priority than search requests
         // Bookings should be able to preempt search requests when needed
         Err(ApiError::Other("Not implemented".to_string()))
@@ -303,7 +303,7 @@ impl ApiClient for BookingApiClient {
         }
     }
     
-    async fn cancel_request(&self, correlation_id: &str) -> bool {
+    async fn cancel_request(&self, _correlation_id: &str) -> bool {
         // TODO: Implement request cancellation
         false
     }
@@ -331,7 +331,7 @@ impl ApiClient for BookingApiClient {
 
 impl BookingApiClient {
     // Create a new client with the given configuration
-    pub async fn new(config: ClientConfig) -> Result<Self, ClientError> {
+    pub async fn new(_config: ClientConfig) -> Result<Self, ClientError> {
         // TODO: Implement proper initialization of all components:
         // - Token bucket rate limiters
         // - Priority queues

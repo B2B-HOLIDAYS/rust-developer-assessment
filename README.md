@@ -1,6 +1,8 @@
 # B2B Holidays Technical Assessment
 
-This repository contains the starter template for the B2B Holidays Senior Rust Developer technical assessment. It provides the structure and interfaces for the three assessment tasks.
+This repository contains the starter template for the B2B Holidays Senior Rust Developer technical assessment. It provides the structure, interfaces, and working examples for the three assessment tasks.
+
+**✅ Ready to Use**: This template compiles cleanly, all tests pass, and includes working example implementations to guide your development.
 
 ## Assessment Overview
 
@@ -23,25 +25,69 @@ This graduated approach reflects our system architecture where some components f
    cargo build
    ```
 4. Run the tests to make sure the environment is set up correctly:
-   ```
+   ```bash
    cargo test
    ```
+5. (Optional) Run the benchmark to see example performance:
+   ```bash
+   cargo bench
+   ```
+
+## Quick Start
+
+1. **Explore the examples**: Look at `src/*_example.rs` files to understand the expected patterns
+2. **Run the tests**: All tests should pass out of the box - this shows you what's expected
+3. **Check the sample data**: Review files in `samples/` to understand the data formats
+4. **Start implementing**: Begin with the part that interests you most, using the examples as reference
 
 ## Project Structure
 
+### Assessment Tasks
 - `src/part1_cache.rs`: Hotel Availability Cache implementation task
 - `src/part2_xml.rs`: XML Processing implementation task
 - `src/part3_api.rs`: Rate-Limited API Client implementation task
-- `benches/cache_benchmark.rs`: Benchmark template for the cache implementation
+
+### Example Implementations (For Reference)
+- `src/part1_cache_example.rs`: Working cache example showing expected patterns
+- `src/part2_xml_example.rs`: Working XML processor example
+- `src/part3_api_example.rs`: Working API client example
+
+### Supporting Files
+- `benches/cache_benchmark.rs`: Performance benchmark for cache implementations
+- `samples/`: Sample data files for testing (JSON and XML formats)
 
 ## Implementation Instructions
 
 For each part of the assessment:
 
 1. Read the trait/struct definitions and comments carefully
-2. Implement the required functionality
-3. Add tests to verify your implementation
-4. Ensure your code is well-documented with comments
+2. **Review the example implementations** (`*_example.rs` files) to understand expected patterns and quality
+3. Implement your own optimized version that demonstrates senior-level Rust expertise
+4. Add comprehensive tests to verify your implementation
+5. Ensure your code is well-documented with comments
+
+**Important**: The example implementations are provided as reference and demonstrate basic functionality. Your implementations should be more sophisticated, performant, and production-ready to showcase senior developer skills.
+
+## Example Implementations
+
+This starter template includes working example implementations for all three parts:
+
+- **`ExampleCache`**: A basic thread-safe cache using `Arc<Mutex<HashMap>>` with simple TTL and size-based eviction
+- **`ExampleHotelSearchProcessor`**: A working XML processor that handles the provided sample data
+- **`ExampleBookingApiClient`**: A basic API client with simple rate limiting and mock responses
+
+**Purpose of Examples:**
+- Demonstrate the expected API usage and patterns
+- Show how to structure tests and handle errors
+- Provide a working baseline for performance comparison
+- Help you understand the problem domain and requirements
+
+**Your Task:**
+Create your own implementations that surpass these examples in:
+- Performance and scalability
+- Sophisticated algorithms (e.g., advanced eviction policies, proper XML parsing)
+- Production readiness (monitoring, resilience, optimization)
+- Code quality and architecture
 
 ### Time Allocation Guidelines
 
@@ -82,7 +128,7 @@ Your tests should cover:
 - Cache eviction strategies under pressure
 - Performance characteristics under various access patterns
 
-Once implemented, update the benchmark in `benches/cache_benchmark.rs` to measure your cache's performance under realistic load.
+The benchmark in `benches/cache_benchmark.rs` is already functional and uses the example implementation. You can run it with `cargo bench` to see baseline performance, then update it to use your implementation for comparison.
 
 ### Part 2: XML Processing and JSON Conversion (Entry Level)
 
@@ -175,11 +221,13 @@ Provide appropriate mocks or test doubles where needed to isolate your tests fro
 
 ## Running Benchmarks
 
-To run the cache benchmark (once implemented):
+To run the cache benchmark:
 
-```
+```bash
 cargo bench
 ```
+
+The benchmark is already functional and will show performance metrics for the example cache implementation. Once you implement your own cache, update the benchmark to use your implementation for performance comparison.
 
 ## Submission Guidelines
 

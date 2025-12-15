@@ -66,12 +66,12 @@ pub struct SupplierRate {
     pub rate_id: String,
     pub board_type: String,
     pub price: f64,
-    pub cancellation_policies: Vec<CancellationPolicy>,
+    pub cancellation_policies: Vec<SupplierCancellationPolicy>,
     pub booking_code: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct CancellationPolicy {
+pub struct SupplierCancellationPolicy {
     pub from_date: String,
     pub amount: f64,
 }
@@ -108,7 +108,7 @@ pub struct Rate {
     pub board_type: String,
     pub price: f64,
     pub currency: String,
-    pub cancellation_policies: Vec<CancellationPolicy>,
+    pub cancellation_policies: Vec<SupplierCancellationPolicy>,
     pub booking_code: String,
 }
 
@@ -132,7 +132,7 @@ pub struct HotelOption {
     pub room_description: String,
     pub board_type: String,
     pub price: Price,
-    pub cancellation_policies: Vec<CancellationPolicy>,
+    pub cancellation_policies: Vec<ProcessedCancellationPolicy>,
     pub payment_type: String,
     pub is_refundable: bool,
     pub search_token: String
@@ -145,7 +145,7 @@ pub struct Price {
 }
 
 #[derive(Debug, Clone)]
-pub struct CancellationPolicy {
+pub struct ProcessedCancellationPolicy {
     pub deadline: String, // ISO date format
     pub penalty_amount: f64,
     pub currency: String,
@@ -175,7 +175,7 @@ impl HotelSearchProcessor {
     
     // Process an XML hotel search response and extract key information
     // The response can be large (1MB+) and should be processed efficiently
-    pub fn process(&self, xml: &str) -> Result<ProcessedResponse, ProcessingError> {
+    pub fn process(&self, _xml: &str) -> Result<ProcessedResponse, ProcessingError> {
         // TODO: Implement this to parse XML response
         Err(ProcessingError::Other("Not implemented".to_string()))
     }
@@ -264,7 +264,7 @@ impl HotelSearchProcessor {
     }
     
     // Convert XML response to ProcessedResponse format
-    pub fn xml_to_processed_response(&self, xml: &str) -> Result<ProcessedResponse, ProcessingError> {
+    pub fn xml_to_processed_response(&self, _xml: &str) -> Result<ProcessedResponse, ProcessingError> {
         // TODO: Implement this to convert XML to ProcessedResponse
         // This would be implemented in a real solution
         Err(ProcessingError::Other("Not implemented".to_string()))
@@ -327,7 +327,7 @@ impl HotelSearchProcessor {
     }
     
     // Extract search parameters from the XML request
-    pub fn extract_search_params(&self, request_xml: &str) -> Result<(String, String, String, String), ProcessingError> {
+    pub fn extract_search_params(&self, _request_xml: &str) -> Result<(String, String, String, String), ProcessingError> {
         // TODO: Implement this to extract currency, nationality, start_date, end_date
         // This would be implemented in a real solution using quick-xml
         Err(ProcessingError::Other("Not implemented".to_string()))
